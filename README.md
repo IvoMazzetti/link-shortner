@@ -1,66 +1,121 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+URL Shortener Application
+Introduction
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+This project is a URL shortening application built with Laravel, developed as part of a job application. The application allows users to shorten long URLs and redirect users to the original URLs through the shortened links.
+Features
 
-## About Laravel
+    Shorten long URLs
+    Redirect users from shortened URLs to original URLs
+    Simple and clean user interface
+    RESTful API endpoints for URL shortening and redirection
+    Validation for URLs to ensure proper formatting
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Requirements
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+    PHP >= 7.4
+    Composer
+    Laravel 8.x
+    MySQL
+    Livewire
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Application Usage Documentation:
+Link :http://167.71.133.239/
 
-## Learning Laravel
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Usage: 
+    You can choose on the first field the link that you wish to be redirected to. (example: https://www.google.com)
+        -Requirements for the first field:
+            - IT MUST BE A VALID URL
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+    On the second field you must choose a code for the redirection. (example: HyT92x. The final link would look like: http://167.71.133.239/redirect/HyT92x )
+        -Requirements for the second field:
+            - STRING
+            - UNIQUE
+            - MAX DIGITS: 25
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+    Generate the link by clicking on the generate button.
+    You will then find the generated link below.
+    Clicking on the link will lead you to the desired URL.
 
-## Laravel Sponsors
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Link:
+    http://167.71.133.239/redirect/{code}
 
-### Premium Partners
+    This link will lead you to the desired URL, if the code is not valid you will be redirected to a 404 error page
+    By clicking on the showned button you will be redirected to the page to generate a valid code/link
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+Link:
+    http://167.71.133.239/login
 
-## Contributing
+    In this link you will be able to login into your own account.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Link:
+    http://167.71.133.239/register
+    
+    In this link you will be able to create your own account.
 
-## Code of Conduct
+Link:
+    http://167.71.133.239/dashboard
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+    In order to access this link you will need to be user authenticated.
+    In this page you will be able to manage all the existent links, so you will be able to edit, delete and create new links.
+    Also on this page you will be able to access the final link
 
-## Security Vulnerabilities
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+API DOCUMENTATION
+    - IN ORDER TO ACCESS THE API YOU WILL NEED TO GET A AUTH CODE
 
-## License
+    In order to get a code you can do this API call:
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+    http://167.71.133.239/api/generate, it will return you your access_token, it should look something like this: "1|UYo1obtP9LZWd7CXsrlcElhFulAHQJwhZfgG6Hzj7ff7a32b"
+
+    You should then use this BEARER Token to auth yourself.
+
+    If you want to get all the available links you can access through this api call:
+    (USE A GET METHOD)
+    
+        - http://167.71.133.239/api/links
+
+    (USE A POST METHOD)
+    If you want to create a new link you should access this endpoint:
+        - http://167.71.133.239/api/links/create
+
+        and this should be your body message (this is an example):
+            {
+                "originalLink" : "https://www.facebook.com",
+                "redirectString" : "cccc"
+            }
+            
+    (USE A GET METHOD)
+    If you want to get one specific code you can access like this:
+
+        - http://167.71.133.239/api/{code}
+
+        Example:
+
+            - http://167.71.133.239/api/cccc
+
+    (USE A DELETE METHOD)
+    If you want to delete one link you can use this endpoint:
+        - http://167.71.133.239/api/{code}/delete
+
+    (USE A PUT METHOD)
+    If you want to UPDATE one link you can use this endpoint:
+        - http://167.71.133.239/api/edit/{code}
+
+        and use the same body example:
+            {
+                "originalLink" : "https://www.facebook.com",
+                "redirectString" : "cccc"
+            }
+    
+
+
+
+
+
+
+
+
+
+            
