@@ -10,6 +10,12 @@ use App\Models\LinkRedirect;
 
 class RedirectUrlController extends Controller
 {
+     /**
+     * Redirects the user to the specified URL code.
+     *
+     * @param string $url_code The URL code to redirect to.
+     * @return \Illuminate\Http\RedirectResponse The redirect response.
+     */
     public function redirect($url_code)
     {
         if ($url_code) {

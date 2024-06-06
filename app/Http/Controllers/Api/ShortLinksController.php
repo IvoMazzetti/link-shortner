@@ -11,6 +11,11 @@ use Illuminate\Support\Facades\Validator;
 class ShortLinksController extends Controller
 {
 
+     /**
+     * Generates a token for the first user in the database and returns it as a JSON response.
+     *
+     * @return \Illuminate\Http\JsonResponse The JSON response containing the access token and token type.
+     */
     public function generate() {
 
         $user = User::all()->first();
@@ -19,6 +24,11 @@ class ShortLinksController extends Controller
         return response()->json(['access_token' => $token, 'token_type' => 'Bearer'], 200);
     }
 
+    /**
+     * Retrieves all the links from the database and returns them as a JSON response.
+     *
+     * @return \Illuminate\Http\JsonResponse The JSON response containing the status and links.
+     */
     public function index()
     {
         $links = LinkRedirect::all();
@@ -36,6 +46,11 @@ class ShortLinksController extends Controller
         }
     }
 
+    /**
+     * Store a new link in the database.
+     *
+     * @return \Illuminate\Http\JsonResponse The JSON response containing the status and message.
+     */
     public function store()
     {
         $validator = Validator::make(request()->all(), [
