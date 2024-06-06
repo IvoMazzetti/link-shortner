@@ -69,10 +69,13 @@ class LinkRedirectController extends Component
      */
     public function initDatatable(): void
     {
-        $this->collumns = Schema::getColumnListing('link_redirects');
-        $this->collumns = array_map(function ($column) {
-            return ucwords(str_replace('_', ' ', $column));
-        }, $this->collumns);
+        $this->collumns = [
+            'id' => 'ID',
+            'redirect_from' => 'Original link',
+            'redirect_to' => 'Short value',
+            'created_at' => 'Created at',
+            'updated_at' => 'Updated at',
+        ];
 
         $this->actions = [
             'create',
@@ -133,7 +136,7 @@ class LinkRedirectController extends Component
     {
         return [
             'originalLink' => 'required|url',
-            'redirectString' => ['string','max:10', Rule::unique('link_redirects', 'redirect_to')->ignore($this->id)],
+            'redirectString' => ['string','max:25', Rule::unique('link_redirects', 'redirect_to')->ignore($this->id)],
         ];
     }
 

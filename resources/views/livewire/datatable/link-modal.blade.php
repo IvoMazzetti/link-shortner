@@ -35,7 +35,9 @@
                       @if($redirectString)
                         <div class="mt-10 text-sm">
                             <p class="text-black">Your final link should look like:</p>
-                            <p class="text-gray-400">www.application.com/{{ $redirectString }}</p>
+                            <a href="{{ env('APP_URL') }}/redirect/{{ $redirectString }}">
+                                <p class="font-bold text-gray-600 text-md">{{ env('APP_URL') }}/redirect/{{ $redirectString }}</p>
+                            </a>
                         </div>
                     @endif
                   </form>
