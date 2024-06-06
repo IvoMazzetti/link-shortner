@@ -16,11 +16,4 @@ class LinkRedirect extends Model
         'redirect_from',
         'redirect_to',
     ];
-
-    protected $dates = ['created_at', 'updated_at'];
-
-    public function getYourDatetimeColumnAttribute($value)
-    {
-        return Carbon::parse($value)->format('Y-m-d H:i:s');
-    }
 }

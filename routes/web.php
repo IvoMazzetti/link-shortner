@@ -6,7 +6,8 @@ use App\Http\Controllers\RedirectUrlController;
 use App\Livewire\LinkRedirectController;
 use App\Livewire\LinkShortnerForm;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\ShortLinksController;
+
+require __DIR__.'/auth.php';
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -14,11 +15,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
-
 Route::get('/dashboard', LinkRedirectController::class)->name('dashboard')->middleware(['auth', 'verified']);
-Route::get('redirect/{url_code}', [RedirectUrlController::class, 'redirect']);
+Route::get('redirect/{url_code}', [RedirectUrlController::class, 'redirect'])->name('redirect');
 
 Route::get('/404', HandleMissingPageController::class)->name('404-code');
 Route::get('/', LinkShortnerForm::class)->name('create-link');
-

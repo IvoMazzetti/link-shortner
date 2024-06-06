@@ -9,5 +9,4 @@
 
     @include('livewire.datatable.table')
     @include('livewire.datatable.link-modal')
-
 </div>

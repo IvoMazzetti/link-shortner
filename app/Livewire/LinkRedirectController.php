@@ -78,6 +78,7 @@ class LinkRedirectController extends Component
             'create',
             'edit',
             'delete',
+            'search',
         ];
     }
 
