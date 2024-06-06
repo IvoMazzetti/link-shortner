@@ -12,9 +12,9 @@ Features
 
 Requirements
 
-    PHP >= 7.4
+    PHP >= 8
     Composer
-    Laravel 8.x
+    Laravel 11
     MySQL
     Livewire
 
