@@ -55,7 +55,6 @@ Link:
     In this link you will be able to create your own account.
 
 Link:
-
     http://167.71.133.239/dashboard
 
     In order to access this link you will need to be user authenticated.
