@@ -123,7 +123,7 @@ class LinkRedirectController extends Component
     {
         $link->delete();
         $this->alert('success', 'Your link was successfully deleted.');
-        return redirect()->route('dashboard');
+        $this->resetInputFields();
     }
 
      /**

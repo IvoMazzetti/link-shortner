@@ -27,7 +27,7 @@
             </thead>
             <tbody>
                 @foreach ($links as $item)
-                <tr class="border-b odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 dark:border-gray-700">
+                <tr wire:key="{{ $item->id }}" class="border-b odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 dark:border-gray-700">
                     @foreach (json_decode($item, true) as $key => $value)
                         <td class="px-6 py-4">
                             @if (strtotime($value)) <!-- Check if the value is a valid date/time string -->
@@ -45,7 +45,7 @@
                             @endif
 
                             @if(in_array('delete', $actions))
-                                <button wire:click="delete('{{ $item->id }}')" type="submit" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Delete</button>
+                                <button wire:click="delete({{ $item->id }})" type="submit" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Delete</button>
                             @endif
 
                             @if(in_array('search', $actions))
